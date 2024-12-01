@@ -45,4 +45,6 @@ Route::middleware(['auth.custom'])->group(function () {
     Route::get('error', [ApiPayPalController::class, 'error']);
     //PLANTILLAS
     Route::view('/recursos/navbar', '/recursos/navbar');
+    //CONTACTO
+    Route::view('/contacto', '/contacto');
 });
