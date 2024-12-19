@@ -4,6 +4,7 @@ use App\Http\Controllers\ApiPayPalController;
 use App\Http\Controllers\ClientesLoginController;
 use App\Http\Controllers\FakeStoreApiController;
 use App\Http\Controllers\GithubController;
+use App\Http\Controllers\IpDataController;
 use App\Http\Controllers\ProductosController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,6 +43,7 @@ Route::middleware(['auth.custom'])->group(function () {
     Route::post('/carrito/quitar', [ProductosController::class, 'quitarCarrito']);
     Route::post('/carrito/incrementar', [ProductosController::class, 'incrementarCarrito']);
     Route::post('/carrito/decrementar', [ProductosController::class, 'decrementarCarrito']);
+    //IPDATA
     Route::get('/inicio/index', [ProductosController::class, 'index'])->name('index');
     Route::get('/inicio/create', [ProductosController::class, 'create'])->name('inicio.create');
     Route::post('/inicio/create', [ProductosController::class, 'store'])->name('inicio.store');

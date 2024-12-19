@@ -1,28 +1,43 @@
 @include('/recursos/navbar')
 
-<header class="m-4 flex justify-center items-center">
-    <div 
-        class="bg-orange-500 dark:bg-orange-700 w-3/5 max-w-screen-lg p-6 rounded-lg shadow-md text-gray-800 dark:text-gray-100">
-        <ol class="list-decimal text-center space-y-4">
-            <li>
-                <span class="font-semibold">Ubicación:</span>
-                {{ session('userData')['city'] ?? 'Ciudad desconocida' }},
-                {{ session('userData')['region'] ?? 'Región desconocida' }}
-            </li>
-            <li>
-                <span class="font-semibold">País:</span>
-                {{ session('userData')['country_name'] ?? 'País desconocido' }}
-            </li>
-            <li>
-                <span class="font-semibold">Moneda:</span>
-                {{ session('userData')['currency']['name'] ?? 'Moneda desconocida' }}
-                ({{ session('userData')['currency']['symbol'] ?? '' }})
-            </li>
-            <li>
-                <span class="font-semibold">Zona Horaria:</span>
-                {{ session('userData')['time_zone']['name'] ?? 'Zona horaria desconocida' }}
-            </li>
-        </ol>
+<header class="m-4">
+    <div class="flex justify-center">
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg w-1/2"> <!-- Cambiado aquí -->
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 text-center">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Ubicación
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            País
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Moneda
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Zona Horaria
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                        <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{$userData['city'] ?? 'Ciudad desconocida' }}, {{$userData['region'] ?? 'Región desconocida' }}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{$userData['country_name'] }}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{$userData['currency']['name'] }} ({{$userData['currency']['symbol'] }})
+                        </td>
+                        <td class="px-6 py-4">
+                            {{$userData['time_zone']['name'] }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </header>
 <div  class="grid grid-cols-2 m-4 md:grid-cols-3 gap-4 max-w-7xl mx-auto justify-items-center">
