@@ -1,6 +1,6 @@
 @include('/recursos/navbar')
 
-{{-- <header class="m-4 flex justify-center items-center">
+<header class="m-4 flex justify-center items-center">
     <div 
         class="bg-orange-500 dark:bg-orange-700 w-3/5 max-w-screen-lg p-6 rounded-lg shadow-md text-gray-800 dark:text-gray-100">
         <ol class="list-decimal text-center space-y-4">
@@ -24,7 +24,7 @@
             </li>
         </ol>
     </div>
-</header> --}}
+</header>
 <div  class="grid grid-cols-2 m-4 md:grid-cols-3 gap-4 max-w-7xl mx-auto justify-items-center">
     @foreach ($productos as $item)
         <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">

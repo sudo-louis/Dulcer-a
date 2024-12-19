@@ -3,6 +3,7 @@
 use App\Http\Controllers\ApiPayPalController;
 use App\Http\Controllers\ClientesLoginController;
 use App\Http\Controllers\FakeStoreApiController;
+use App\Http\Controllers\GithubController;
 use App\Http\Controllers\ProductosController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//GitHub Login
+Route::get('auth/github', [GithubController::class, 'redirect'])->name('github.login');
+Route::get('auth/github/callback', [GithubController::class, 'callback']);
+
+//Login & Register
 Route::get('/register', [ClientesLoginController::class, 'index']);
 Route::post('/register', [ClientesLoginController::class, 'registrar']);
 Route::post('/inicio/login', [ClientesLoginController::class, 'login']);
@@ -36,7 +42,7 @@ Route::middleware(['auth.custom'])->group(function () {
     Route::post('/carrito/quitar', [ProductosController::class, 'quitarCarrito']);
     Route::post('/carrito/incrementar', [ProductosController::class, 'incrementarCarrito']);
     Route::post('/carrito/decrementar', [ProductosController::class, 'decrementarCarrito']);
-    Route::get('/inicio/index', [ProductosController::class, 'index']);
+    Route::get('/inicio/index', [ProductosController::class, 'index'])->name('index');
     Route::get('/inicio/create', [ProductosController::class, 'create'])->name('inicio.create');
     Route::post('/inicio/create', [ProductosController::class, 'store'])->name('inicio.store');
     //PAYPAL API
